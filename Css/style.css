@@ -13,7 +13,7 @@
     background-color: #f9f9f9;
   }
   
-  h1, h2 {
+  h1, h2, h3 {
     font-weight: bold;
     text-align: center;
     color: #0f1001;
@@ -25,8 +25,8 @@
   }
   
   h2 {
-    font-size: 24px;
-
+    font-size: 30px;
+    text-decoration: underline;
   }
   
   ul {
@@ -34,7 +34,7 @@
     margin: 0;
     padding: 0;
   }
-    li {
+  li {
     display: inline-block;
     margin-right: 20px;
   }
@@ -112,19 +112,19 @@
     flex-wrap: wrap;
   }
   
-  main article div div {
+  main article div {
     flex-basis: calc(20% - 1rem);
     margin-bottom: 1rem;
   }
   
-  main article div div img {
+  main article div img {
     width: 100%;
     height: auto;
     border-radius: 5px;
     margin-bottom: 0.5rem;
   }
   
-  main article div div p {
+  main article div p {
     margin: 0;
   }
   
@@ -174,11 +174,13 @@
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 10px;
+    color: rgb(0, 0, 0);
   }
   
   label {
     display: block;
     margin-bottom: 10px;
+    color: #0f1001;
   }
   
   input[type="text"],
@@ -215,16 +217,17 @@
   input[type="reset"] {
     width: 100%;
     padding: 10px;
-    background-color: #333;
+    background-color: rgb(0, 0, 0);
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition-duration: 0.6s;
   }
   
   input[type="submit"]:hover,
   input[type="reset"]:hover {
-    background-color: #444;
+    background-color: rgb(88, 94, 146);
   }
   
   /* Footer Styles */
@@ -238,4 +241,33 @@
   
   footer p {
     margin-bottom: 10px;
+  }
+
+  #mensajeError {
+    font-weight: bold;
+    color: rgb(255, 0, 0);
+    text-align: center;
+  }
+
+  #tamaño input {
+  margin-left: 60px; 
+  }
+  #send {
+    margin-bottom: 10px;
+  }
+
+  #anima{
+    animation-duration: 6s;
+    animation-name: slidein;
+  }
+  @keyframes slidein {
+    from {
+      margin-left: 80%;
+      width: 100%;
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
   }
