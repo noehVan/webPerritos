@@ -65,20 +65,20 @@
             </ul>
         </nav>
     </header>    
-    <main>
+   <main>
         <h2>Contacto</h2> <br>
         <h3>Complete sus datos</h3> <br>
         <form action="#" method="post" id="formulario">
             <fieldset>
-                <legend><b>Datos personales</b></legend>               
-                    <label for="apellido-y-nombre"> Apellido y nombre</label>
-                    <input id="apellido-y-nombre" type="text" size="10" maxlength="30">
+                <legend><b>Datos personalesa</b></legend>               
+                    <label for="apellido-y-nombre"> Apellido y nombre: <small>*</small></label>
+                    <input id="apellido-y-nombre" type="text" size="10" maxlength="30" required>
                 
                 <label for="telefono"> Telefono: <small>*</small></label>
-                    <input type="text" name="telefono" id="telefono" size="10" maxlength="25">
+                    <input type="text" name="telefono" id="telefono" size="10" maxlength="25" required>
 
                     <label for="correo-electronico"> Correo Electronico: <small>*</small></label>
-                    <input type="text" name="correo-electronico" id="correo-electronico" size="10" maxlength="30">
+                    <input type="text" name="correo-electronico" id="correo-electronico" size="10" maxlength="30" required>
 
                     <label for="raza"> Raza: <small>*</small></label>
                     <input type="text" name="raza" id="raza" size="10" maxlength="30">
@@ -113,9 +113,35 @@
                     <input type="radio" name="residencia" id="residencia_pba" value="2"> Prov. de Buenos Aires
                 </label>
             </fieldset>
-            <p id="mensajeError"></p>
             <input type="submit" value="Enviar Formulario" id="send">
             <input type="reset" value="Borrar Campos">
+            <p id="mensajeError"></p>
+            <p id="mensajeExito"></p>
+  
+            <script>
+                const formulario = document.getElementById('formulario');
+                const mensajeError = document.getElementById('mensajeError');
+                const mensajeExito = document.getElementById('mensajeExito');
+            
+                formulario.addEventListener('submit', function(evento) {
+                  evento.preventDefault();
+                  const datos = new FormData(formulario);
+                  fetch('/enviar-mensaje.php', {
+                    method: 'POST',
+                    body: datos
+                  })
+                 .then(response => response.text())
+                 .then(mensaje => {
+                    mensajeExito.innerText = 'Muchas gracias, en breve nos comunicaremos con usted.';
+                    setTimeout(function() {
+                      window.location.href = "../Index.html";
+                    }, 2000);
+                  })
+                 .catch(error => {
+                    mensajeError.innerText = 'Error al enviar el mensaje. Intente nuevamente.';
+                  });
+                });
+              </script>
         </form>
     </main>
     <footer>
