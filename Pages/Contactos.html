@@ -6,30 +6,32 @@
     <link rel="stylesheet" type="text/css" href="/Css/style.css" media="screen">
     <title>Contacto</title>
     <link rel="icon" href="/logo/icon.png">
-    <!-- valido formulario -->
-    <script>
+    <!-- valido formulario ----------------->
+    <script type="text/javascript">
          document.addEventListener("DOMContentLoaded", function () {
         const formulario = document.getElementById('formulario');
         const mensajeError = document.getElementById('mensajeError');
 
         formulario.addEventListener('submit', function (evento) {
-        evento.preventDefault(); 
+        evento.preventDefault(); // Previene el envío del formulario para poder validarlo con Javascript
 
         let nombre = document.getElementById('nombre').value;
         let telefono = document.getElementById('telef').value;
         let email = document.getElementById('email').value;
-                
-        if (nombre.trim(nombre) === '') {
+
+
+        // Validación de los campos
+        if (nombre.trim() === '') {
             mensajeError.innerText = 'El campo nombre no puede estar vacío.';
             return;
         }
 
-        if (telefono.trim(telefono) === '') {
+        if (telefono.trim() === '') {
             mensajeError.innerText = 'El campo telefono no puede estar vacío';
             return;
         }
 
-        if (email.trim(email) === '') {
+        if (email.trim() === '') {
             mensajeError.innerText = 'El campo email no puede estar vacío';
             return;
         }
@@ -40,7 +42,7 @@
         }
 
         mensajeError.innerText = '';
-         alert('Formulario enviado con éxito!');
+        alert('Formulario enviado con éxito!');
         formulario.submit();
         });
 
@@ -54,49 +56,52 @@
 </head>
 <body>    
     <header>
-        <h1>FocheCan</h1>        
+        <h1>Fochecan</h1>        
         <nav>
             <ul>
                 <li><a href="../Index.html">Inicio</a></li>
-                <li><a href="/Pages/Guarderia.html" >Guarderia</a></li>
-                <li><a href="/Pages/Quienes.html" >Quienes Somos</a></li>
-                <li><a href="/Pages/Historia.html" >Historia del Perro</a></li>
-                <li><a href="/Pages/Servicios.html" >Servicios</a></li>
+                <li><a href="/Pages/Guarderia.html">Guarderia</a></li>
+                <li><a href="/Pages/Quienes.html">Quienes Somos</a></li>
+                <li><a href="/Pages/Historia.html">Historia del Perro</a></li>
+                <li><a href="/Pages/Servicios.html">Servicios</a></li>
             </ul>
         </nav>
     </header>    
-   <main>
+    <main>
         <h2>Contacto</h2> <br>
         <h3>Complete sus datos</h3> <br>
-        <form action="#" method="post" id="formulario">
+        <form id="formulario">
             <fieldset>
-                <legend><b>Datos personalesa</b></legend>               
-                    <label for="apellido-y-nombre"> Apellido y nombre: <small>*</small></label>
-                    <input id="apellido-y-nombre" type="text" size="10" maxlength="30" required>
+                <legend><b>Datos personales</b></legend>
                 
-                <label for="telefono"> Telefono: <small>*</small></label>
-                    <input type="text" name="telefono" id="telefono" size="10" maxlength="25" required>
-
-                    <label for="correo-electronico"> Correo Electronico: <small>*</small></label>
-                    <input type="text" name="correo-electronico" id="correo-electronico" size="10" maxlength="30" required>
-
-                    <label for="raza"> Raza: </label>
+                <label for="nombre">Apellido y Nombre: <small>*</small>
+                    <input type="text" name="apellido-nombre" id="nombre" size="10" maxlength="30">
+                </label>
+                
+                <label for="telef">Telefono: <small>*</small>
+                    <input type="text" name="telefono" id="telef" size="10" maxlength="25" >
+                </label>
+                <label for="email"> Correo Electronico: <small>*</small>
+                        <input type="text" name="correoElecronico" id="email" size="10" maxlength="30">
+                </label>
+                <label for="raza"> Raza:
                     <input type="text" name="raza" id="raza" size="10" maxlength="30">
-                <label  id="tamaño"> Tamaño: </label>
-                        <br>
-                    <input name="pequeño" type="checkbox" >Pequeño
+                </label>
+                <label id="tamaño">Tamaño:</label>
+                        
+                    <input name="peque" type="checkbox">Pequeño
                     
-                    <input name="mediano" type="checkbox" >Mediano
+                    <input name="mediano" type="checkbox">Mediano
     
-                    <input name="grande" type="checkbox" >Grande 
-               
+                    <input name="grande" type="checkbox">Grande
+                
             </fieldset>
             <fieldset>
                 <legend><b>Consulta</b></legend>
                 <label for="mensaje"> Mensaje:
                     <textarea name="mensaje" id="mensaje" cols="30" rows="10"></textarea>
                 </label>
-                <label for="conocio">¿Como nos conocio?:
+                <label>¿Como nos conocio?:
                     <select name="conocio" id="conocio">
                         <option value="1">Facebook</option>
                         <option value="2">Instagram</option>
@@ -105,43 +110,16 @@
                         <option value="5">Otras Redes Sociales</option>
                     </select>
                 </label>
+                <label> Zona de residencia<br>
+                    <input type="radio" name="residencia" id="caba" value="1"> CABA
+                </label>    
                 <label>
-                    Zona de residencia: <br>
-                    <input type="radio" name="residencia" id="residencia_caba" value="1"> CABA
-                </label>
-                <label>
-                    <input type="radio" name="residencia" id="residencia_pba" value="2"> Prov. de Buenos Aires
+                    <input type="radio" name="residencia" id="bsas" value="2"> Prov. de Buenos Aires
                 </label>
             </fieldset>
+            <p id="mensajeError"></p>
             <input type="submit" value="Enviar Formulario" id="send">
             <input type="reset" value="Borrar Campos">
-            <p id="mensajeError"></p>
-            <p id="mensajeExito"></p>
-  
-            <script>
-                const formulario = document.getElementById('formulario');
-                const mensajeError = document.getElementById('mensajeError');
-                const mensajeExito = document.getElementById('mensajeExito');
-            
-                formulario.addEventListener('submit', function(evento) {
-                  evento.preventDefault();
-                  const datos = new FormData(formulario);
-                  fetch('/enviar-mensaje.php', {
-                    method: 'POST',
-                    body: datos
-                  })
-                 .then(response => response.text())
-                 .then(mensaje => {
-                    mensajeExito.innerText = 'Muchas gracias, en breve nos comunicaremos con usted.';
-                    setTimeout(function() {
-                      window.location.href = "../Index.html";
-                    }, 2000);
-                  })
-                 .catch(error => {
-                    mensajeError.innerText = 'Error al enviar el mensaje. Intente nuevamente.';
-                  });
-                });
-              </script>
         </form>
     </main>
     <footer>
