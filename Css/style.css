@@ -138,6 +138,9 @@
     main article div div {
       flex-basis: 100%;
     }
+    main form {
+        width: 100%
+    }
   }
   .image-container {
     width: 100%; 
